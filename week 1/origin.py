@@ -28,133 +28,42 @@ def roundHalfUp(d): #helper-fn
 #################################################
 
 def distance(x1, y1, x2, y2):
-    return ((x1-x2)**2 + (y1-y2)**2)**(1/2)
+    return 42
 
 def circlesIntersect(x1, y1, r1, x2, y2, r2):
-    d = ((x1-x2)**2 + (y1-y2)**2)**(1/2)
-    if d == abs(r1 - r2) or d <= (r1 + r2):
-        return True
-    return False 
+    return 42
 
 def getInRange(x, bound1, bound2):
-    if  bound1 > bound2:
-        bound1, bound2 = bound2, bound1
-    
-    if x < bound1:
-        return bound1
-    elif bound1 <= x <= bound2:
-        return x
-    else:
-        return bound2
+    return 42
 
 def eggCartons(eggs):
-    if eggs % 12 == 0:
-        return eggs // 12
-    else:
-        return eggs // 12 + 1
+    return 42
 
 def pascalsTriangleValue(row, col):
-    if row < 0 or col < 0 or col > row:
-        return 
-    return (math.factorial(row))/(math.factorial(row-col) * math.factorial(col))
+    return 42
 
 def getKthDigit(n, k):
-    n = abs(n) % (10**(k+1))
-    if n < 10**k:
-        return 0
-    else:
-        return n // (10**k)
- 
+    return 42
+
 def setKthDigit(n, k, d):
-    if n < 0:
-        nev = True
-    else: 
-        nev = False
-    
-    n = abs(n)
-    old_KthDigit = getKthDigit(n, k)
-    n += 10**(k) * (d - old_KthDigit)
-    
-    if nev:
-        return (-1) * n
-    else:
-        return n 
+    return 42
 
 #################################################
 # Part B
 #################################################
         
 def nearestOdd(n):
-    left = (n - 1) // 1
-    right = (n + 1) // 1
-    if left % 2 == 0 and right % 2 == 0:
-        return int((n // 1))
-    elif n % 1 == 0:
-        return int(left)
-    else:
-        return int(right)
+    return 42
 
 def numberOfPoolBalls(rows):
-
-    return rows*(rows + 1)/2
+    return 42
 
 def numberOfPoolBallRows(balls):
-    '''if balls == 0:
-        return 0'''
-    sol = (((1 + 8 * balls)**(1/2) - 1)/2)
-    r = roundHalfUp(sol) 
-    if r < sol:
-        return r + 1
-    else:
-        return r
-
-def d1rgb(rgb):
-    return rgb // (10**6)
-def d3rgb(rgb):
-    return rgb % (10**3)
-def d2rgb(rgb):
-    return (rgb - d1rgb(rgb)*(10**6) - d3rgb(rgb)) // (10**3)
-def calculate(drgb1, drgb2, midpoints, n):
-    
-    digit_diff = drgb1 - drgb2
-    space = abs(digit_diff) / (midpoints + 1)
-    remainder = abs(digit_diff) % (midpoints + 1)
-    r = roundHalfUp(space)
-
-    if remainder <= (midpoints + 1)//2:
-        if math.floor(n/2) <= remainder:
-            if digit_diff < 0:
-                drgb1 += r * n + math.floor(n/2)
-            else:
-                drgb1 -= r * n + math.floor(n/2)
-            return drgb1
-        else:
-            if digit_diff < 0:
-                drgb1 += r * n + remainder
-            else:
-                drgb1 -= r * n + remainder
-            return drgb1
-    else:
-        if math.floor(n/2) <= ((midpoints + 1)-remainder):
-            if digit_diff < 0:
-                drgb1 += r * n - math.floor(n/2)
-            else:
-                drgb1 -= r * n - math.floor(n/2)
-            return drgb1
-        else:
-            if digit_diff < 0:
-                drgb1 += r * n - ((midpoints + 1)-remainder)
-            else:
-                drgb1 -= r * n - ((midpoints + 1)-remainder)
-            return drgb1
+    return 42
 
 def colorBlender(rgb1, rgb2, midpoints, n):
-    if n < 0 or n > midpoints + 1:
-        return 
-    d1 = calculate(d1rgb(rgb1), d1rgb(rgb2), midpoints, n) * 10**6
-    d2 = calculate(d2rgb(rgb1), d2rgb(rgb2), midpoints, n) * 10**3 
-    d3 = calculate(d3rgb(rgb1), d3rgb(rgb2), midpoints, n)
-    return d1 + d2 + d3
+    return 42
+
 #################################################
 # Bonus/Optional
 #################################################
@@ -363,17 +272,17 @@ def testBonusFindIntRootsOfCubic():
 def testAll():
     # comment out the tests you do not wish to run!
     # Part A:
-    #testDistance()
-    #testCirclesIntersect()
-    #testGetInRange()
-    #testEggCartons()
-    #testPascalsTriangleValue()
-    #testGetKthDigit()
-    #testSetKthDigit()
+    testDistance()
+    testCirclesIntersect()
+    testGetInRange()
+    testEggCartons()
+    testPascalsTriangleValue()
+    testGetKthDigit()
+    testSetKthDigit()
     # Part B:
-    #testNearestOdd()
-    #testNumberOfPoolBalls()
-    #testNumberOfPoolBallRows()
+    testNearestOdd()
+    testNumberOfPoolBalls()
+    testNumberOfPoolBallRows()
     testColorBlender()
     # Bonus:
     # testBonusPlayThreeDiceYahtzee()
