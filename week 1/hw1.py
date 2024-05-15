@@ -159,12 +159,68 @@ def colorBlender(rgb1, rgb2, midpoints, n):
 # Bonus/Optional
 #################################################
 
+def handToDice(hand):
+    return (getKthDigit(hand,2),getKthDigit(hand,1),getKthDigit(hand,0))
+
+def diceToOrderedHand(a, b, c):
+    maxd = max(a,b,c)
+    mind = min(a,b,c)
+    median = (a+b+c) - maxd - mind
+    return maxd*10**2 + median*10 + mind
+
+def playStep2(hand, dice):
+    diceForHand = handToDice(hand)
+    maxd = max(diceForHand)
+    mind = min(diceForHand)
+    median = sum(diceForHand) - maxd - mind
+    if maxd == mind: 
+        return (hand, dice)
+    elif median == maxd:
+        return (diceToOrderedHand(maxd, maxd, dice%10), dice//10)
+    elif median == mind:
+        return (diceToOrderedHand(mind, mind, dice%10), dice//10)
+    else:
+        return (diceToOrderedHand(maxd, (dice%10**2)//10, dice%10), dice//10**2)
+    
+def score(hand):
+    diceForHand = handToDice(hand)
+    maxd = max(diceForHand)
+    mind = min(diceForHand)
+    median = sum(diceForHand) - maxd - mind
+    if maxd == mind: 
+        return 20 + maxd * 3
+    elif median == maxd or median == mind:
+        return 10 + median * 2
+    else:
+        return maxd
+    
 def bonusPlayThreeDiceYahtzee(dice):
-    return 42
+    hand = dice % 10**3
+    dice //= 10**3
+    (hand1,dice1) = playStep2(hand, dice)
+
+    if hand1 == hand:
+        return (hand1, score(hand1))
+    (hand2, dice2) = playStep2(hand1, dice1)
+    return (hand2, score(hand2))
 
 def bonusFindIntRootsOfCubic(a, b, c, d):
-    return 42
-
+    #Guaranteed the function has 3 real roots (HERE, all integers)
+    p = -b/(3*a) 
+    q = p**3 + (b*c-3*a*d)/(6*a**2)
+    r = c/(3*a)
+    x1  = (q + (q**2 + (r-p**2)**3)**(1/2))**(1/3) \
+        + (q - (q**2 + (r-p**2)**3)**(1/2))**(1/3) + p
+    
+    x1 = x1.real
+    x1 = int(x1)
+    discrimination = (b**2 - 4*a*c - 2*a*b*x1 - 3 * a**2 * x1**2)**(1/2)
+    x2 = int(((-b-x1*a + discrimination) / 2*a).real)
+    x3 = int(((-b-x1*a - discrimination) / 2*a).real)
+    r1 =  min(x1,x2,x3)
+    r3 = max(x1,x2,x3)
+    r2 = (x1+x2+x3) - r1 - r3
+    return r1, r2, r3
 #################################################
 # Test Functions
 #################################################
@@ -363,21 +419,21 @@ def testBonusFindIntRootsOfCubic():
 def testAll():
     # comment out the tests you do not wish to run!
     # Part A:
-    #testDistance()
-    #testCirclesIntersect()
-    #testGetInRange()
-    #testEggCartons()
-    #testPascalsTriangleValue()
-    #testGetKthDigit()
-    #testSetKthDigit()
+    testDistance()
+    testCirclesIntersect()
+    testGetInRange()
+    testEggCartons()
+    testPascalsTriangleValue()
+    testGetKthDigit()
+    testSetKthDigit()
     # Part B:
-    #testNearestOdd()
-    #testNumberOfPoolBalls()
-    #testNumberOfPoolBallRows()
+    testNearestOdd()
+    testNumberOfPoolBalls()
+    testNumberOfPoolBallRows()
     testColorBlender()
     # Bonus:
-    # testBonusPlayThreeDiceYahtzee()
-    # testBonusFindIntRootsOfCubic()
+    testBonusPlayThreeDiceYahtzee()
+    #testBonusFindIntRootsOfCubic()
 
 def main():
     cs112_s22_week1_linter.lint()
