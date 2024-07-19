@@ -605,7 +605,6 @@ def appendOrPop(intList, state):
         intListLength -= 1
     newEncodedIntListLength = lengthEncode(intListLength)
 
-    
     withoutOldEncodeListLength = intEncodedListLen - oldEncodedIntListLengthLen
     intList %= 10 ** (withoutOldEncodeListLength)
     intList += newEncodedIntListLength * 10 ** withoutOldEncodeListLength
@@ -1433,11 +1432,11 @@ def testAll():
     #testIntListSet()
     #testIntList()
     #testIntSet()
-    #testIntegerDataStructures()
+    testIntegerDataStructures()
     #testEncodeDecodeStrings()
     #testIntMap()
     #testIntFSM()
-    testAccepts()
+    #testAccepts()
 def main():
     cs112_s22_week2_linter.lint()
     testAll()

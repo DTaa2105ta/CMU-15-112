@@ -1,24 +1,27 @@
-_module = 'cs112_s22_week2_linter.py version 1.0'
+_module = 'cs112_s22_week3_linter.py version 1.0'
 # Place this file in the same folder as your Python files.
 # While you need to use this file to do your exercises, students
 # are not expected to look at nor to understand any code in this file.
 
 # bannedTokens list for week 2
 _bannedTokens = (
-        'as,class,del,except,finally,' +
-        'global,lambda,nonlocal,raise,repr,' +
-        'try,with,' +
+        'class,del,' +
+        'global,lambda,nonlocal,' +
+        'with,' +
         '__import__,ascii,bin,bytearray,bytes,callable,' +
-        'classmethod,compile,delattr,dict,dir,enumerate,' +
+        'classmethod,compile,delattr,dict,dir,' +
         'eval,literal_eval,exec,filter,format,frozenset,getattr,globals,' +
         'hasattr,hash,help,hex,id,issubclass,iter,' +
         'list,map,memoryview,object,oct,' +
-        'open,property,reversed,set,' +
-        'setattr,slice,sorted,staticmethod,super,tuple,' +
-        'vars,zip,importlib,imp,string,[,],{,}')
+        'property,set,' +
+        'setattr,staticmethod,super,tuple,' +
+        'vars,zip,importlib,imp,{,}')
 
 import math, sys, traceback, inspect, parser
 import platform
+import warnings
+
+warnings.filterwarnings("ignore")
 
 class _AssertionError(AssertionError): pass
 
