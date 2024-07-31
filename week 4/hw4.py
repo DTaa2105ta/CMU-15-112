@@ -305,6 +305,7 @@ def runSimpleProgram(program, args):
 
     while True:
         line = lines[countLine].strip()
+        
         if line.startswith("JMP"):
             line = line.split(" ")
             if line[0] == "JMP":
@@ -313,6 +314,7 @@ def runSimpleProgram(program, args):
             elif jmpParser(line[0], line[1], locals):
                 label = line[2] + ":"
                 countLine = lines.index(label)
+        
         elif line.startswith("L"):
             line = line.split(" ")
             localIndexInLine = int(line[0][1])
