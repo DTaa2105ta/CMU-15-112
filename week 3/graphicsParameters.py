@@ -18,3 +18,4 @@ def redrawAll(app, canvas):
     canvas.create_rectangle(125,  25, 175, 190, fill='purple', width=0)
 
 runApp(width=1200, height=600)
+

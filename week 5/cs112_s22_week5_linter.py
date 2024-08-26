@@ -1,28 +1,26 @@
-_module = 'cs112_s22_week2_linter.py version 1.0'
+_module = 'cs112_s22_week5_linter.py version 1.0'
 # Place this file in the same folder as your Python files.
 # While you need to use this file to do your exercises, students
 # are not expected to look at nor to understand any code in this file.
 
 # bannedTokens list for week 2
 _bannedTokens = (
-        'as,class,del,except,finally,' +
-        'global,lambda,nonlocal,raise,repr,' +
-        'try,with,' +
+        'threeMensMorris,' +
+        'statistics,' +
+        'class,del,' +
+        'global,lambda,nonlocal,' +
+        #'with,' +
         '__import__,ascii,bin,bytearray,bytes,callable,' +
-        'classmethod,compile,delattr,dict,dir,enumerate,' +
+        'classmethod,compile,delattr,dict,dir,' +
         'eval,literal_eval,exec,filter,format,frozenset,getattr,globals,' +
         'hasattr,hash,help,hex,id,issubclass,iter,' +
-        'list,map,memoryview,object,oct,' +
-        'open,property,reversed,set,' +
-        'setattr,slice,sorted,staticmethod,super,tuple,' +
-        'vars,zip,importlib,imp,string,[,],{,}')
+        'map,memoryview,object,oct,' +
+        'property,set,' +
+        'setattr,staticmethod,super,' +
+        'vars,importlib,imp,{,}')
 
 import math, sys, traceback, inspect, parser
 import platform
-import warnings
-
-# Bỏ qua tất cả các cảnh báo
-warnings.filterwarnings("ignore")
 
 class _AssertionError(AssertionError): pass
 
@@ -146,8 +144,8 @@ class _Linter(object):
         if (self.code == None):
             with open(self.filename, 'rt', encoding="utf-8") as f:
                 try: self.code = f.read()
-                except:
-                    msg = 'Error when trying to read file:\n' + str()
+                except e:
+                    msg = 'Error when trying to read file:\n' + str(e)
                     expl = ("This usually means something got corrupted in "
                             "your file\n\t\t\t and you should remove the "
                             "corrupted portions or\n\t\t\t start a new file.")
