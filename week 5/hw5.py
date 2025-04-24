@@ -402,7 +402,6 @@ def makeWordSearch(wordList, replaceEmpties):
                 rowToAdd = list('-' * wordLen)
                 board.append(rowToAdd)
         # Adding words according to provided rules
-
         if word == wordList[0]:
             board[0] = letters
         else:
