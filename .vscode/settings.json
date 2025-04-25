@@ -1,0 +1,8 @@
+{
+    "editor.fontFamily": "'MonofurNerdFont-Regular', 'Monofur', Monofur",
+    "editor.fontSize": 16,
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "'MonofurNerdFont-Regular'",
+    "terminal.integrated.fontSize": 14,
+    "editor.fontWeight": "normal"
+  }
