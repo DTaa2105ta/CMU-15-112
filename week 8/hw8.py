@@ -144,10 +144,13 @@ def containsPythagoreanTriple(L):
                     return True
             seen.add(b)
     return False
-
+#from collections import defaultdict
 def movieAwards(oscarResults):
-
-    return 42
+    results = dict()
+    for record in oscarResults:
+        movie = record[1]
+        results[movie] = results.get(movie, 0) + 1
+    return results
 
 def friendsOfFriends(friends):
     return 42
@@ -423,11 +426,11 @@ def testAll():
     #testGetRecord()
     #testPersonClass()
     #testGetPairSum()
-    testContainsPythagoreanTriple()
-    """
+    #testContainsPythagoreanTriple()
+    
     testMovieAwards()
-    testFriendsOfFriends()
-    """
+    #testFriendsOfFriends()
+    
     # testBonusAnimation()
 
 #################################################
