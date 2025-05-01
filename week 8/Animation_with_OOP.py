@@ -1,6 +1,6 @@
 from cmu_112_graphics import *
 import random
-import math
+
 class Dot:
     def __init__(self, cx, cy, r, counter, color):
         self.cx = cx

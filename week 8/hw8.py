@@ -153,7 +153,14 @@ def movieAwards(oscarResults):
     return results
 
 def friendsOfFriends(friends):
-    return 42
+    fof = dict()
+    for (person, frSet) in friends.items():
+        seen = set()
+        for fr in frSet:
+            seen.update(friends[fr] - frSet)
+        seen.discard(person)
+        fof[person] = seen
+    return fof
 
 #################################################
 # Bonus Animation
@@ -428,8 +435,8 @@ def testAll():
     #testGetPairSum()
     #testContainsPythagoreanTriple()
     
-    testMovieAwards()
-    #testFriendsOfFriends()
+    #testMovieAwards()
+    testFriendsOfFriends()
     
     # testBonusAnimation()
 
